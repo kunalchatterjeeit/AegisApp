@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aegis_Gps_App.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Label x:Key="lblDeviceId" x:Name="lblDeviceId"></Label>
+            <Label x:Key="lblUserId" x:Name="lblUserId"></Label>
+            <Label x:Key="lblLatitude" x:Name="lblLatitude"></Label>
+            <Label x:Key="lblLongitude" x:Name="lblLongitude"></Label>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

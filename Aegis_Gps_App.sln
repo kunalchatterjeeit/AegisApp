@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aegis_Gps_App.Android", "Aegis_Gps_App\Aegis_Gps_App.Android\Aegis_Gps_App.Android.csproj", "{9099E90A-A201-4E33-83B6-55501CEE5632}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aegis_Gps_App", "Aegis_Gps_App\Aegis_Gps_App\Aegis_Gps_App.csproj", "{2A35CB53-6F27-44FF-B0E4-FD07160E9667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{708359F1-270F-4CA7-B19A-CE6D346B7741}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9099E90A-A201-4E33-83B6-55501CEE5632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9099E90A-A201-4E33-83B6-55501CEE5632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9099E90A-A201-4E33-83B6-55501CEE5632}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9099E90A-A201-4E33-83B6-55501CEE5632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9099E90A-A201-4E33-83B6-55501CEE5632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9099E90A-A201-4E33-83B6-55501CEE5632}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2A35CB53-6F27-44FF-B0E4-FD07160E9667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A35CB53-6F27-44FF-B0E4-FD07160E9667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A35CB53-6F27-44FF-B0E4-FD07160E9667}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2A35CB53-6F27-44FF-B0E4-FD07160E9667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A35CB53-6F27-44FF-B0E4-FD07160E9667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A35CB53-6F27-44FF-B0E4-FD07160E9667}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{708359F1-270F-4CA7-B19A-CE6D346B7741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{708359F1-270F-4CA7-B19A-CE6D346B7741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{708359F1-270F-4CA7-B19A-CE6D346B7741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{708359F1-270F-4CA7-B19A-CE6D346B7741}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F0A37F5-F503-4D3F-B981-FA1A7789497B}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Aegis_Gps_App.Views.DocketList" BackgroundColor="#0F243E" Title="My docket list">
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            CachingStrategy="RecycleElement" SeparatorColor="Red" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding DocketNo}" d:Text="{Binding DocketNo}" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding DocketDateTime}" d:Text="DocketDateTime" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding CustomerName}" d:Text="CustomerName" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding ProductName}" d:Text="ProductName" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding CallStatus}" d:Text="CallStatus" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding ContactPerson}" d:Text="ContactPerson" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding IsCallAttended}" d:Text="IsCallAttended" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding AssignedEngineerName}" d:Text="AssignedEngineerName" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

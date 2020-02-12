@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Aegis_Gps_App.Views.LoyaltyPointList" BackgroundColor="#0F243E" Title="My loyalty point list">
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            CachingStrategy="RecycleElement" SeparatorColor="Red" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Point}" d:Text="{Binding Point}" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Month}" d:Text="Month" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Year}" d:Text="Year" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Reason}" d:Text="Reason" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                         </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

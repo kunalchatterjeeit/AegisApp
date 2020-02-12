@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Aegis_Gps_App.Views.AttendanceList" BackgroundColor="#0F243E" Title="My attendance list">
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            CachingStrategy="RecycleElement" SeparatorColor="Red" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding AttendanceInDate}" d:Text="{Binding AttendanceInDate}" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding AttendanceOutDate}" d:Text="AttendanceOutDate" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding TotalWorkingHours}" d:Text="TotalWorkingHours" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding IsLate}" d:Text="IsLate" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding IsLateReduced}" d:Text="IsLateReduced" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding IsHalfDay}" d:Text="IsHalfDay" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

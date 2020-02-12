@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aegis_Gps_App.LoginForm">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Add more resources here -->
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Add more resource dictionaries here -->
+                <!-- Add more resource dictionaries here -->
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Add more resources here -->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#0F243E">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Margin="40,0,40,0">
+                <Entry x:Name="txtUserName" Placeholder="Username" TextColor="#3498DB" PlaceholderColor="#3498DB" />
+                <Entry x:Name="txtPassword" Placeholder="Password" TextColor="#3498DB" PlaceholderColor="#3498DB" IsPassword="True"/>
+                <Button Text="Login" TextColor="White" BackgroundColor="#BE0F17" FontAttributes="Bold" Clicked="Button_Clicked" />
+                <ActivityIndicator x:Name="activityIndicator" Color="#BF0001" 
+                                   IsRunning="{Binding Busy}"
+                                   IsVisible="{Binding Busy}" 
+                                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=0.33}"
+                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=0.33}"></ActivityIndicator>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

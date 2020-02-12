@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Aegis_Gps_App.MainLayoutMaster"
+             Title="Master">
+  <StackLayout BackgroundColor="#000">
+        <ListView x:Name="MenuItemsListView"
+              HasUnevenRows="true"
+              ItemsSource="{Binding MenuItems}" 
+              SeparatorVisibility="None" CachingStrategy="RecycleElement">
+       <!--<ListView.Header>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+          </Grid.RowDefinitions>
+          <Image Source="drawable/icon.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+        </Grid>
+      </ListView.Header>-->
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+                <StackLayout VerticalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Padding="20,10,0,10"
+                        Spacing="20" BackgroundColor="#E79E28">
+
+                    <Image Source="{Binding Image}"
+                    WidthRequest="40"
+                    HeightRequest="20"
+                    VerticalOptions="Center" />
+                    
+                    <Label Text="{Binding Name}"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

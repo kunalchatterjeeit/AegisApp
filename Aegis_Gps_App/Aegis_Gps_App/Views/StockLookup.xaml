@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Aegis_Gps_App.Views.StockLookup" BackgroundColor="#0F243E" Title="Stock lookup">
+    <StackLayout>
+        <SearchBar x:Name="searchBarStock" SearchButtonPressed="SearchBar_SearchButtonPressed" BackgroundColor="White"></SearchBar>
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            CachingStrategy="RecycleElement" SeparatorColor="Red" HasUnevenRows="True" ItemTapped="Handle_ItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding ItemName}" d:Text="{Binding ItemName}" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Quantity}" d:Text="Quantity" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding Location}" d:Text="Location" Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White"/>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    </StackLayout>
+</ContentPage>

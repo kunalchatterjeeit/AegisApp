@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Aegis_Gps_App.Views.UpcomingLeaveList" BackgroundColor="#0F243E" Title="My upcoming leaves">
+    <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            CachingStrategy="RecycleElement" SeparatorColor="Red" >
+        <!--<ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding .}" d:Text="{Binding .}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>-->
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Margin="5, 5, 5, 5" VerticalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+                        <Label Text="{Binding LeaveType}" 
+                   d:Text="{Binding LeaveType}"
+                   Style="{DynamicResource ListItemTextStyle}" TextColor="White" />
+                        <Label Text="{Binding LeaveDuration}" 
+                   d:Text="Detail" HorizontalOptions="EndAndExpand"
+                   Style="{DynamicResource ListItemDetailTextStyle}" TextColor="White" FlowDirection="RightToLeft"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
