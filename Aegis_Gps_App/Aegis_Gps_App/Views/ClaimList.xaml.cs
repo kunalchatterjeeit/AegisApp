@@ -24,7 +24,6 @@ namespace Aegis_Gps_App.Views
 
             MyListView.ItemsSource = GetClaimLists().Result;
         }
-
         private async Task<List<ClaimModel>> GetClaimLists()
         {
             List<ClaimModel> retValue = new List<ClaimModel>();
@@ -62,6 +61,14 @@ namespace Aegis_Gps_App.Views
                 System.Environment.Exit(0);
             }
             return retValue;
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            base.OnBackButtonPressed();
+            MainLayout masterDetailPage = new MainLayout();
+            masterDetailPage.Detail = new NavigationPage(new MainLayoutDetail());
+            Application.Current.MainPage = masterDetailPage;
+            return true;
         }
     }
 }

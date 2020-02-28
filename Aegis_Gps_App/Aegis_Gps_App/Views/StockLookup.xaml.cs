@@ -66,13 +66,14 @@ namespace Aegis_Gps_App.Views
             return retValue;
         }
 
-        private void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
                 return;
-            MainLayout masterDetailPage = new MainLayout();
-            masterDetailPage.Detail = new NavigationPage(new StockDetail(((StockSnapModel)e.Item).ItemId, ((StockSnapModel)e.Item).ItemType, ((StockSnapModel)e.Item).AssetLocationId));
-            Application.Current.MainPage = masterDetailPage;
+            await Navigation.PushAsync(new StockDetail(((StockSnapModel)e.Item).ItemId, ((StockSnapModel)e.Item).ItemType, ((StockSnapModel)e.Item).AssetLocationId));
+            //MainLayout masterDetailPage = new MainLayout();
+            //masterDetailPage.Detail = new NavigationPage(new StockDetail(((StockSnapModel)e.Item).ItemId, ((StockSnapModel)e.Item).ItemType, ((StockSnapModel)e.Item).AssetLocationId));
+            //Application.Current.MainPage = masterDetailPage;
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
@@ -81,6 +82,15 @@ namespace Aegis_Gps_App.Views
         {
             string keyword = searchBarStock.Text;
             MyListView.ItemsSource = retValue.Where(p => p.ItemName.ToUpper().Contains(keyword.ToUpper()) || p.Location.ToUpper().Contains(keyword.ToUpper()));
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            base.OnBackButtonPressed();
+            MainLayout masterDetailPage = new MainLayout();
+            masterDetailPage.Detail = new NavigationPage(new MainLayoutDetail());
+            Application.Current.MainPage = masterDetailPage;
+            return true;
         }
     }
 }

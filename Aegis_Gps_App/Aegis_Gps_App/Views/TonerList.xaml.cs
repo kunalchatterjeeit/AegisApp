@@ -63,5 +63,13 @@ namespace Aegis_Gps_App.Views
             }
             return retValue;
         }
+        protected override bool OnBackButtonPressed()
+        {
+            base.OnBackButtonPressed();
+            MainLayout masterDetailPage = new MainLayout();
+            masterDetailPage.Detail = new NavigationPage(new MainLayoutDetail());
+            Application.Current.MainPage = masterDetailPage;
+            return true;
+        }
     }
 }

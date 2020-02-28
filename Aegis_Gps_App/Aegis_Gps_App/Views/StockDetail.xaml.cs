@@ -66,5 +66,20 @@ namespace Aegis_Gps_App.Views
             }
             return retValue;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            // Begin an asyncronous task on the UI thread because we intend to ask the users permission.
+            //Device.BeginInvokeOnMainThread(async () =>
+            //{
+            //    base.OnBackButtonPressed();
+            //    await App.Navigation.PopAsync();
+            //});
+            base.OnBackButtonPressed();
+            MainLayout masterDetailPage = new MainLayout();
+            masterDetailPage.Detail = new NavigationPage(new StockLookup());
+            Application.Current.MainPage = masterDetailPage;
+            return true;
+        }
     }
 }

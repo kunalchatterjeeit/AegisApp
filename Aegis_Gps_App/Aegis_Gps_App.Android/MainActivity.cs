@@ -35,8 +35,6 @@ namespace Aegis_Gps_App.Droid
             }
             GetPosition();
         }
-
-
         public async void GetPosition()
         {
             var request = new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(10));
