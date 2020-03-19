@@ -51,6 +51,10 @@ namespace Aegis_Gps_App
                     await DisplayAlert("Message", model.Message, "Ok");
                     Application.Current.MainPage = new NavigationPage(new MainLayout());
                 }
+                else if (model.ResponseCode == (int)HttpStatusCode.BadRequest)
+                {
+                   throw new Exception(model.Message);
+                }
             }
             catch (Exception ex)
             {
@@ -60,10 +64,10 @@ namespace Aegis_Gps_App
             }
             finally
             {
-                
+
             }
         }
-        
+
         private void GetAccountDetails()
         {
             try
@@ -81,7 +85,7 @@ namespace Aegis_Gps_App
                     var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                     Task<HttpResponseMessage> response = client.PostAsync(App.accountDetailsUri, content);//.ConfigureAwait(false);
                     response.Wait();
-                    
+
                     if (response.IsCompleted && response.Result != null && response.Result.IsSuccessStatusCode)
                     {
                         var result = response.Result.Content.ReadAsStringAsync();
@@ -138,35 +142,43 @@ namespace Aegis_Gps_App
             }
             finally
             {
-               
+
             }
         }
 
         private async Task<AttendanceModel> MakeAttendance()
         {
             AttendanceModel model = new AttendanceModel();
-
-            if (App.CheckInternetConnection())
+            if (!string.IsNullOrEmpty(latitude)&& !string.IsNullOrEmpty(longitude))
             {
-                HttpClient client = new HttpClient() { BaseAddress = new Uri(App.baseUrl) };
-                model = new AttendanceModel()
+                if (App.CheckInternetConnection())
                 {
-                    UserId = userId,
-                    DeviceId = deviceId,
-                    Latitude = latitude,
-                    Longitude = longitude,
-                    AttendanceMode = attendanceMode
-                };
+                    HttpClient client = new HttpClient() { BaseAddress = new Uri(App.baseUrl) };
+                    model = new AttendanceModel()
+                    {
+                        UserId = userId,
+                        DeviceId = deviceId,
+                        Latitude = latitude,
+                        Longitude = longitude,
+                        AttendanceMode = attendanceMode
+                    };
 
-                string jsonData = JsonConvert.SerializeObject(model);
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(App.attendance_MakeAttendanceUri, content).ConfigureAwait(false);
-                var result = await response.Content.ReadAsStringAsync();
-                model = JsonConvert.DeserializeObject<AttendanceModel>(result);
+                    string jsonData = JsonConvert.SerializeObject(model);
+                    var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PostAsync(App.attendance_MakeAttendanceUri, content).ConfigureAwait(false);
+                    var result = await response.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<AttendanceModel>(result);
+                }
+                else
+                {
+                    model.ResponseCode = (int)HttpStatusCode.BadRequest;
+                    model.Message = "No internet connection.";
+                }
             }
             else
             {
-                throw new Exception("No internet connection");
+                model.ResponseCode = (int)HttpStatusCode.BadRequest;
+                model.Message = "GPS location not accessible. Please check setting.";
             }
             return model;
         }

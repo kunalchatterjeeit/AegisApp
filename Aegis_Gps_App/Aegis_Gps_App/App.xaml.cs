@@ -1,6 +1,7 @@
 ﻿using Plugin.Connectivity;
 using Plugin.Geolocator.Abstractions;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,12 +27,13 @@ namespace Aegis_Gps_App
         public const string getStockDetailsUri = "Account/GetStockDetails";
         public const string getIsAuthorizedUri = "Account/IsAuthorized";
 
-        public App(string deviceId, Position position)
+        private Position _position;
+
+        public App(string deviceId, bool nevigate)
         {
             InitializeComponent();
+            GetPosition();
             lblDeviceId.Text = deviceId;
-            lblLatitude.Text = Convert.ToString(position.Latitude);
-            lblLongitude.Text = Convert.ToString(position.Longitude);
             MainPage = new NavigationPage(new MainPage());
         }
 
@@ -50,7 +52,6 @@ namespace Aegis_Gps_App
             // Handle when your app resumes
         }
 
-
         public static bool CheckInternetConnection()
         {
             bool retValue = false;
@@ -67,5 +68,26 @@ namespace Aegis_Gps_App
             }
             return retValue;
         }
+
+        public async void GetPosition()
+        {
+            Location location = new Location();
+            try
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(10));
+                location = await Geolocation.GetLocationAsync(request);
+            }
+            catch
+            {
+                location = await Geolocation.GetLastKnownLocationAsync();
+            }
+            if (location != null && !location.IsFromMockProvider)
+            {
+                _position = new Position(location.Latitude, location.Longitude);
+                lblLatitude.Text = _position.Latitude.ToString();
+                lblLongitude.Text = _position.Longitude.ToString();
+            }
+        }
+
     }
 }

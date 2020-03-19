@@ -16,9 +16,9 @@ namespace Aegis_Gps_App.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static string deviceId = Android.Provider.Settings.Secure.GetString(Android.App.Application.Context.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
-         private Position _position;
+       
         protected override void OnCreate(Bundle savedInstanceState)
-        {            
+        {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -33,21 +33,13 @@ namespace Aegis_Gps_App.Droid
             {
                 RequestPermissions(new string[] { Manifest.Permission.Internet }, 0);
             }
-            GetPosition();
-        }
-        public async void GetPosition()
-        {
-            var request = new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(10));
-            var location = await Geolocation.GetLocationAsync(request);
-            if (location != null && !location.IsFromMockProvider)
+            //push notification
+            bool navigate = false;
+            if (Intent.Extras != null)
             {
-                _position = new Position(location.Latitude, location.Longitude);
-                LoadApplication(new App(deviceId, _position));
+                navigate = true;
             }
-            else
-            {
-                throw new Exception("Mocked GPS location detected.");
-            }
+            LoadApplication(new App(deviceId, navigate));
         }
     }
 }
